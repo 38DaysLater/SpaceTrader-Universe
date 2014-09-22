@@ -32,7 +32,7 @@ public class SolarSystem {
         Random rand = new Random();
         planetSet = new HashSet<Planet>();
         
-        int size = 1;
+        int size = rand.nextInt(2) + 1;
         for (int index = 0; index < size; index++){
             int xpos = rand.nextInt(SOLARSIZE);
             int ypos = rand.nextInt(SOLARSIZE);
@@ -61,7 +61,26 @@ public class SolarSystem {
         return list;
     }
     
+    public String getName(){
+        return name;
+    }
+    
+    public String toString(){
+        String message;
+        message = "Solar System Name: " + name;
+        message = message + "\nSolar System Position: (" + x + "," + y + ")";
+        message = message + "\nPlanets:";
+        List<Planet> list = getPlanets();
+        for (Planet planet: list){
+            message = message + "\n\t" + planet.toString();
+            message = message + "\n--------------------------------------";
+        }
+        
+        return message;
+    }
+    
     public static void main(String[] args){
         SolarSystem zeSS = new SolarSystem("test", 5, 5);
+        System.out.println(zeSS.toString());
     }   
 }
